@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Data Table</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 40px;
+
+            font-family: Arial, sans-serif;
+
+            background: #f3f4f6;
+        }
+
+
+        .container {
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: white;
+        }
+
+
+        th,
+        td {
+            padding: 14px;
+
+            border: 1px solid #ddd;
+
+            text-align: left;
+        }
+
+
+        th {
+            background: #222;
+
+            color: white;
+        }
+
+
+        .skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+        }
+
+
+        .skill {
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            background: #e8f0ff;
+
+            color: #1557a6;
+        }
+
+
+        button {
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+
+        .edit {
+            background: #198754;
+
+            color: white;
+        }
+
+
+        .delete {
+            background: #dc3545;
+
+            color: white;
+
+            margin-left: 5px;
+        }
+
+
+        /* Popup */
+
+        dialog {
+            width: 420px;
+
+            max-width: 90%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 0;
+        }
+
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+
+        .popup {
+            padding: 25px;
+        }
+
+
+        .popup h2 {
+            margin-top: 0;
+        }
+
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+
+        .field label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-weight: bold;
+        }
+
+
+        .field input[type="text"],
+        .field input[type="date"],
+        .field input[type="number"] {
+            width: 100%;
+
+            padding: 9px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+        }
+
+
+        .skill-list {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+        }
+
+
+        .actions {
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .save {
+            background: #198754;
+
+            color: white;
+        }
+
+
+        .cancel {
+            background: #6c757d;
+
+            color: white;
+        }
+
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px;
+            }
+
+
+            table {
+                min-width: 800px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+        <h1>User Data Table</h1>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>DoB</th>
+
+                    <th>Age</th>
+
+                    <th>Salary</th>
+
+                    <th>Skills</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <!-- JavaScript yahan rows dalega -->
+
+            <tbody id="userList"></tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- ==============================
+         EDIT POPUP
+    =============================== -->
+
+    <dialog id="editBox">
+
+        <div class="popup">
+
+            <h2>Edit User</h2>
+
+
+            <!-- ID ko screen par nahi dikhana -->
+
+            <input type="hidden" id="editId">
+
+
+            <div class="field">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="editName"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Date of Birth</label>
+
+                <input
+                    type="date"
+                    id="editDob"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Salary</label>
+
+                <input
+                    type="number"
+                    id="editSalary"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Skills</label>
+
+
+                <div class="skill-list">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="html"
+                            class="skillOption"
+                        >
+                        HTML
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="css"
+                            class="skillOption"
+                        >
+                        CSS
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="javascript"
+                            class="skillOption"
+                        >
+                        JavaScript
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="react"
+                            class="skillOption"
+                        >
+                        React
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="node"
+                            class="skillOption"
+                        >
+                        Node
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="vue"
+                            class="skillOption"
+                        >
+                        Vue
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="cancel"
+                    id="cancelEdit"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    class="save"
+                    id="saveChanges"
+                >
+                    Update
+                </button>
+
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+
+    <script>
+
+        // ==========================================
+        // 1. USER DATA
+        // ==========================================
+
+        const users = [
+
+            {
+                id: 101,
+                name: "  alex JOHNSON ",
+                dob: "1992-06-15",
+                salary: "55000",
+                skills: ["html", "css", "javascript"]
+            },
+
+
+            {
+                id: 102,
+                name: "  maria  smith  ",
+                dob: "1988-11-03",
+                salary: "72000",
+                skills: ["react", "node", "css"]
+            },
+
+
+            {
+                id: 103,
+                name: "john doe",
+                dob: "1996-02-25",
+                salary: "48000",
+                skills: ["vue", "javascript", "html"]
+            }
+
+        ];
+
+
+
+        // ==========================================
+        // 2. HTML ELEMENTS ACCESS
+        // ==========================================
+
+        const userList =
+            document.querySelector("#userList");
+
+
+        const editBox =
+            document.querySelector("#editBox");
+
+
+        const editId =
+            document.querySelector("#editId");
+
+
+        const editName =
+            document.querySelector("#editName");
+
+
+        const editDob =
+            document.querySelector("#editDob");
+
+
+        const editSalary =
+            document.querySelector("#editSalary");
+
+
+        const saveChanges =
+            document.querySelector("#saveChanges");
+
+
+        const cancelEdit =
+            document.querySelector("#cancelEdit");
+
+
+        const skillOptions =
+            document.querySelectorAll(".skillOption");
+
+
+
+        // ==========================================
+        // 3. NAME FORMAT
+        // ==========================================
+
+        function makeName(name) {
+
+            return name
+                .trim()
+                .split(/\s+/)
+                .map(word =>
+                    word[0].toUpperCase() +
+                    word.slice(1).toLowerCase()
+                )
+                .join(" ");
+
+        }
+
+
+
+        // ==========================================
+        // 4. DATE FORMAT
+        // ==========================================
+
+        function showDate(dob) {
+
+            const date = new Date(dob);
+
+
+            return date.toLocaleDateString("en-GB", {
+
+                day: "2-digit",
+
+                month: "short",
+
+                year: "numeric"
+
+            });
+
+        }
+
+
+
+        // ==========================================
+        // 5. AGE
+        // ==========================================
+
+        function getAge(dob) {
+
+            const birth =
+                new Date(dob);
+
+
+            const today =
+                new Date();
+
+
+            let age =
+                today.getFullYear() -
+                birth.getFullYear();
+
+
+            const month =
+                today.getMonth() -
+                birth.getMonth();
+
+
+            if (
+                month < 0 ||
+                (
+                    month === 0 &&
+                    today.getDate() < birth.getDate()
+                )
+            ) {
+
+                age--;
+
+            }
+
+
+            return age;
+
+        }
+
+
+
+        // ==========================================
+        // 6. SKILL NAME
+        // ==========================================
+
+        function skillName(skill) {
+
+            return skill[0].toUpperCase() +
+                   skill.slice(1);
+
+        }
+
+
+
+        // ==========================================
+        // 7. DISPLAY TABLE
+        // ==========================================
+
+        function showUsers() {
+
+
+            userList.innerHTML = "";
+
+
+            users.forEach(user => {
+
+
+                const row =
+                    document.createElement("tr");
+
+
+                const skillData =
+                    user.skills
+                    .map(skill => {
+
+                        return `
+                            <span class="skill">
+                                ${skillName(skill)}
+                            </span>
+                        `;
+
+                    })
+                    .join("");
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${makeName(user.name)}
+                    </td>
+
+
+                    <td>
+                        ${showDate(user.dob)}
+                    </td>
+
+
+                    <td>
+                        ${getAge(user.dob)}
+                    </td>
+
+
+                    <td>
+                        ${Number(user.salary)}
+                    </td>
+
+
+                    <td>
+
+                        <div class="skills">
+
+                            ${skillData}
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <button
+                            class="edit"
+                            data-user="${user.id}"
+                        >
+                            Edit
+                        </button>
+
+
+                        <button
+                            class="delete"
+                            data-user="${user.id}"
+                        >
+                            Delete
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                userList.append(row);
+
+            });
+
+
+            setButtonEvents();
+
+        }
+
+
+
+        // ==========================================
+        // 8. BUTTON EVENTS
+        // ==========================================
+
+        function setButtonEvents() {
+
+
+            const editButtons =
+                document.querySelectorAll(".edit");
+
+
+            const deleteButtons =
+                document.querySelectorAll(".delete");
+
+
+
+            // EDIT
+
+            editButtons.forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const id =
+                            Number(
+                                button.dataset.user
+                            );
+
+
+                        openEditor(id);
+
+                    }
+                );
+
+            });
+
+
+
+            // DELETE
+
+            deleteButtons.forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const id =
+                            Number(
+                                button.dataset.user
+                            );
+
+
+                        removeUser(id);
+
+                    }
+                );
+
+            });
+
+        }
+
+
+
+        // ==========================================
+        // 9. DELETE USER
+        // ==========================================
+
+        function removeUser(id) {
+
+
+            const result =
+                users.filter(
+                    user => user.id !== id
+                );
+
+
+            users.splice(
+                0,
+                users.length,
+                ...result
+            );
+
+
+            showUsers();
+
+        }
+
+
+
+        // ==========================================
+        // 10. OPEN EDITOR
+        // ==========================================
+
+        function openEditor(id) {
+
+
+            const user =
+                users.find(
+                    user => user.id === id
+                );
+
+
+            if (!user) {
+
+                return;
+
+            }
+
+
+            editId.value =
+                user.id;
+
+
+            editName.value =
+                user.name.trim();
+
+
+            editDob.value =
+                user.dob;
+
+
+            editSalary.value =
+                user.salary;
+
+
+
+            skillOptions.forEach(option => {
+
+                option.checked =
+                    user.skills.includes(
+                        option.value
+                    );
+
+            });
+
+
+            editBox.showModal();
+
+        }
+
+
+
+        // ==========================================
+        // 11. UPDATE USER
+        // ==========================================
+
+        saveChanges.addEventListener(
+            "click",
+            () => {
+
+
+                const id =
+                    Number(editId.value);
+
+
+                const user =
+                    users.find(
+                        user => user.id === id
+                    );
+
+
+                if (!user) {
+
+                    return;
+
+                }
+
+
+
+                const selectedSkills =
+                    Array.from(skillOptions)
+                    .filter(
+                        option => option.checked
+                    )
+                    .map(
+                        option => option.value
+                    );
+
+
+
+                user.name =
+                    editName.value;
+
+
+                user.dob =
+                    editDob.value;
+
+
+                user.salary =
+                    editSalary.value;
+
+
+                user.skills =
+                    selectedSkills;
+
+
+
+                showUsers();
+
+
+                editBox.close();
+
+            }
+        );
+
+
+
+        // ==========================================
+        // 12. CLOSE POPUP
+        // ==========================================
+
+        cancelEdit.addEventListener(
+            "click",
+            () => {
+
+                editBox.close();
+
+            }
+        );
+
+
+
+        // ==========================================
+        // 13. REDUCE
+        // ==========================================
+
+        const totalSkills =
+            users.reduce(
+                (total, user) => {
+
+                    return total +
+                           user.skills.length;
+
+                },
+                0
+            );
+
+
+        console.log(
+            "Total Skills:",
+            totalSkills
+        );
+
+
+
+        // ==========================================
+        // 14. FIRST DISPLAY
+        // ==========================================
+
+        showUsers();
+
+    </script>
+
+</body>
+
+</html>

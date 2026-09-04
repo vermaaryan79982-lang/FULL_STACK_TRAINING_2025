@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Utility</title>
+</head>
+
+<body>
+
+<script>
+
+// ==========================================
+// GIVEN DATA
+// ==========================================
+
+const users = [
+    {
+        id: 101,
+        name: "  alex JOHNSON ",
+        dob: "1992-06-15",
+        salary: "55000",
+        skills: ["html", "css", "javascript"]
+    },
+    {
+        id: 102,
+        name: "  maria smith  ",
+        dob: "1988-11-03",
+        salary: "72000",
+        skills: ["react", "node", "css"]
+    },
+    {
+        id: 103,
+        name: "john doe",
+        dob: "1996-02-25",
+        salary: "48000",
+        skills: ["vue", "javascript", "html"]
+    }
+];
+
+
+// ==========================================
+// TASK 1: STRING OPERATIONS
+// ==========================================
+
+
+let names = users.map(user => user.name.trim());
+
+names = names.map(name => name.toLowerCase());
+
+names = names.map(name => name.split(" "));
+
+names = names.map(name =>
+    name.map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+    )
+);
+names = names.map(name => name.join(" "));
+
+console.log("Formatted Names:", names);
+
+
+// ==========================================
+// TASK 2: ARRAY OPERATIONS
+// ==========================================
+
+let allSkills = users.map(user => user.skills).flat();
+
+let uniqueSkills = [...new Set(allSkills)];
+
+uniqueSkills.sort();
+
+console.log("Unique Skills:", uniqueSkills);
+
+let javascriptUsers = users.filter(
+    user => user.skills.includes("javascript")
+).length;
+
+console.log("JavaScript Users:", javascriptUsers);
+
+
+// ==========================================
+// TASK 3: NUMBER OPERATIONS
+// ==========================================
+
+let salaries = users.map(user => Number(user.salary));
+
+console.log("Salaries:", salaries);
+
+
+let totalSalary = salaries.reduce(
+    (total, salary) => total + salary,
+    0
+);
+
+let averageSalary = Math.round(totalSalary / salaries.length);
+
+
+let highestSalary = Math.max(...salaries);
+
+let lowestSalary = Math.min(...salaries);
+
+
+let salaryResult = {
+    average: averageSalary,
+    highest: highestSalary,
+    lowest: lowestSalary
+};
+
+console.log("Salary Result:", salaryResult);
+
+
+// ==========================================
+// TASK 4: DATE OPERATIONS
+// ==========================================
+let dates = users.map(user => new Date(user.dob));
+
+
+let today = new Date();
+
+
+let ages = users.map((user, index) => {
+
+    let dob = dates[index];
+
+    let age = today.getFullYear() - dob.getFullYear();
+
+    if (
+        today.getMonth() < dob.getMonth() ||
+        (
+            today.getMonth() === dob.getMonth() &&
+            today.getDate() < dob.getDate()
+        )
+    ) {
+        age--;
+    }
+
+    return age;
+});
+
+console.log("Ages:", ages);
+
+
+// ==========================================
+// OLDEST USER
+// ==========================================
+
+
+let oldestAge = Math.max(...ages);
+
+
+
+let oldestIndex = ages.indexOf(oldestAge);
+
+
+
+let oldestName = names[oldestIndex];
+
+
+let oldestUser = {
+    name: oldestName,
+    age: oldestAge
+};
+
+console.log("Oldest User:", oldestUser);
+
+</script>
+
+</body>
+</html>

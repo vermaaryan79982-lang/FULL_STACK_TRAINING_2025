@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME PAGE</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+
+      background: white;
+      color: #222;
+    }
+
+
+    .box {
+      background:
+        linear-gradient(to right,
+          rgba(123, 47, 247, 0.8),
+          rgba(59, 130, 246, 0.8)),
+        url(../image/first.jpeg);
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      color: white;
+      text-align: center;
+
+      padding: 100px 20px;
+    }
+
+    .box-content h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .box-content p {
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 30px;
+
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+    .download-link {
+      background: #2ecc71;
+      color: white;
+
+      text-decoration: none;
+
+      padding: 12px 30px;
+      border-radius: 5px;
+
+      display: inline-block;
+    }
+
+
+
+
+
+    .main {
+      width: 100%;
+
+      padding: 100px 20px;
+    }
+
+
+
+
+
+    .heading {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .heading h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .heading p {
+      width: 600px;
+      margin: auto;
+
+      color: gray;
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+
+
+    .cards {
+
+      width: 100%;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 50px;
+    }
+
+    .card {
+      width: 300px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 220px;
+    }
+
+    .card h2 {
+      margin-top: 25px;
+      margin-bottom: 20px;
+
+      font-size: 30px;
+    }
+
+    .card p {
+      color: gray;
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+
+
+
+
+    .design {
+      width: 700px;
+      margin: auto;
+
+      text-align: center;
+
+      padding-top: 100px;
+    }
+
+    .design img {
+      width: 300px;
+      margin-bottom: 40px;
+    }
+
+    .design h1 {
+      font-size: 42px;
+      margin-bottom: 25px;
+    }
+
+    .design p {
+      color: gray;
+      font-size: 20px;
+      line-height: 35px;
+    }
+
+
+
+
+
+    .doc {
+      width: 100%;
+      padding-top: 100px;
+    }
+
+    .content {
+      width: 700px;
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .content img {
+      width: 300px;
+      margin-bottom: 40px;
+    }
+
+    .content h1 {
+      font-size: 42px;
+      margin-bottom: 25px;
+    }
+
+    .content p {
+      color: gray;
+      font-size: 20px;
+      line-height: 35px;
+    }
+
+
+
+
+
+    .src {
+      width: 100%;
+      padding-top: 100px;
+    }
+
+    .src-box {
+      width: 700px;
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .src-box img {
+      width: 300px;
+      margin-bottom: 40px;
+    }
+
+    .src-box h1 {
+      font-size: 42px;
+      margin-bottom: 25px;
+    }
+
+    .src-box p {
+      color: gray;
+      font-size: 20px;
+      line-height: 35px;
+    }
+
+
+    .css {
+      margin-top: 100px;
+
+      background:
+        linear-gradient(to right,
+          rgba(123, 47, 247, 0.8),
+          rgba(59, 130, 246, 0.8));
+
+      color: white;
+      text-align: center;
+
+      padding: 100px 20px;
+    }
+
+    .css-content h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .css-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <section class="box">
+
+    <div class="box-content">
+
+      <h1>A production-ready theme for your projects</h1>
+
+      <p>
+        Evie is an MIT licensed template bundled with a minimal style guide to build
+        websites faster. It is extremely lightweight, customizable and works perfectly
+        on modern browsers.
+      </p>
+
+      <a href="#" class="download-link">Download</a>
+
+    </div>
+
+  </section>
+
+
+  <section class="main">
+
+    <div class="heading">
+
+
+      <h1>Who can use Evie?</h1>
+
+      <p>
+        Here's who we can think of, but surely creative people will surprise us
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <img src="../image/2image.svg" alt="">
+
+        <h2>Programmers</h2>
+
+        <p>
+          A landing page for your open source projects.
+          Present your solution, easily create docs
+        </p>
+
+      </div>
+
+
+
+      <div class="card">
+
+        <img src="../image/3image.svg" alt="">
+
+        <h2>Designers</h2>
+
+        <p>
+          A website for your own freebies.
+          Let the world download and use your artwork.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <img src="../image/image_4.svg" alt="">
+
+        <h2>Makers</h2>
+
+        <p>
+          A great starting point for your web application.
+          Focus on your idea and execution
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+
+
+  <section class="design">
+
+    <img src="../image/4image.svg" alt="">
+
+    <h1>
+      Natural styling with almost nothing to learn
+    </h1>
+
+    <p>
+      Evie brings you the pages you'll need and the structure
+      to create your own, without a learning curve. It is minimal
+      and mostly styles plain elements.
+    </p>
+
+  </section>
+
+
+
+  <section class="doc">
+
+    <div class="content">
+
+      <img src="../image/image5.svg" alt="">
+
+      <h1>
+        Framework agnostic. Your front-end setup,
+        your choice.
+      </h1>
+
+      <p>
+        Evie has zero dependencies and uses vanilla JavaScript for a few
+        functions with minimal footprint. You can use React, Vue, Angular,
+        jQuery or whatever you prefer.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+
+  <section class="src">
+
+    <div class="src-box">
+
+      <img src="../image/image6.svg" alt="">
+
+      <h1>
+        Ready for production or rapid prototyping
+      </h1>
+
+      <p>
+        Landing, authentication and a few other pages to select from, despite
+        the small size. Tested on production at unDraw with amazing speeds
+        and unopinionated on how to structure your project.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+
+
+  <section class="css">
+
+    <div class="css-content">
+
+      <h1>Get started now</h1>
+
+      <p>
+        Grab the production version and begin your project instantly
+      </p>
+
+      <a href="#" class="download-link">Download</a>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>

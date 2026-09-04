@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks on flexbox</title>
+    <style>
+       
+        .main-wrapper {
+            width: 900px;
+            margin: 40px auto;
+        }
+
+    
+        .page-title-header {
+            background-color: #e2ebf0;
+            color: #164883;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-left: 5px solid #164883;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            margin: 40px 0 20px 0;
+            text-indent: 15px;
+        }
+
+        .task-container {
+            margin-bottom: 30px;
+        }
+
+        .task-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .task-container p {
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        
+        .preview-box {
+            border: 1px solid #b0cddb;
+            border-radius: 4px;
+            margin-top: 15px;
+            background-color: #ffffff;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .task1-preview { height: 100px; }
+        .task2-preview { height: 300px; }
+        .task3-preview { height: 360px; }
+        .task4-preview { height: 220px; }
+
+        .separator {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px dashed #ccc;
+        }
+
+      
+        .task1-nav {
+            width: 100%;
+        }
+
+        .task1-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .task1-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #164883;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #2d5a96;
+            font-size: 0.95rem;
+            width: 140px;
+            height: 45px; 
+        }
+
+        
+        .task2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        .task2-grid .grid-item {
+            background-color: #164883;
+            color: white;
+            border-radius: 6px;
+            border: 1px solid #2d5a96;
+            font-size: 0.95rem;
+            height: 240px;
+            overflow: auto;
+        }
+
+      
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border: 2px solid #b5c4cf;
+            border-radius: 12px;
+            width: 450px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .child {
+            background-color: #164883;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border-radius: 2px;
+            width: 150px; 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tags-flex-wrapper {
+            display: flex;
+            flex-wrap: wrap;       
+            gap: 20px 15px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .tag-item {
+            background-color: #164883;
+            color: white;
+            border-radius: 10px;   
+            border: 1px solid #2d5a96;
+            font-size: 1rem;
+            width: 135px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+       
+        .layout-wrapper-box {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        .layout-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            height: 750px;
+        }
+
+        .left-sidebar {
+            background-color: #1a1115;
+            height: 100%;
+        }
+
+        .main-body {
+            width: 94%;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .top-banner, .sub-box, .card-header-part, .card-body-part, .gallery-block, .split-top {
+            background-color: #ededed;
+            border: 1px solid #e2e2e2;
+            border-radius: 6px;
+        }
+
+        .top-banner {
+            height: 130px;
+            width: 100%;
+        }
+
+        .middle-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .left-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .triple-box-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            height: 100px;
+            align-items: center;
+        }
+        .triple-box-row .sub-box { 
+            height: 75px; 
+            width: 90%; 
+            margin: 0 auto; 
+        }
+
+        .double-box-row {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 12px;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            width: 85%;
+            height: 95px;
+            align-items: center;
+        }
+        .double-box-row .sub-box { 
+            height: 70px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .right-featured-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 220px;
+        }
+        .card-header-part {
+            height: 45%;
+            background-color: #e4e4e4;
+            border: none;
+            border-radius: 0;
+        }
+        .card-body-part {
+            height: 55%;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 0;
+        }
+
+        .bottom-gallery-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            align-items: end;
+            height: 160px;
+        }
+        .bottom-gallery-strip .gallery-block {
+            margin-bottom: 15px;
+        }
+
+        .gallery-block { background-color: #dbdbdb; }
+        .height-60 { height: 60px; }
+        .height-80 { height: 80px; }
+        .height-100-split { 
+            height: 95px; 
+            background-color: #ffffff;
+            border: 1px solid #e2e2e2;
+            display: flex;
+            flex-direction: column;
+        }
+        .split-top {
+            height: 60px;
+            background-color: #dbdbdb;
+            border: none;
+            border-radius: 4px 4px 0 0;
+        }
+        .height-100 { height: 100px; }
+        .height-120 { height: 120px; }
+        .height-50  { height: 45px; }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="page-title-header">PAGE 1: Task 1 & Task 2</div>
+
+        <section class="task-container">
+            <h2>Task 1</h2>
+            <p>In this task, the list items are the navigation for a site. They should be laid out as a row, with an equal amount of space between each item.</p>
+            <div class="preview-box task1-preview">
+                <nav class="task1-nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Products</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <section class="task-container">
+            <h2>Task 2</h2>
+            <p>In this task, the list items are all different sizes, but we want them to be displayed as three equal sized columns, no matter what content is in each item.</p>
+            <div class="preview-box task2-preview">
+                <div class="task2-grid">
+                    <div class="grid-item">I am small</div>
+                    <div class="grid-item">I have more content than the very small item.</div>
+                    <div class="grid-item">I have lots of content. So much content that I don't know where it is all going to go. I'm glad that CSS is pretty good at dealing with situations where we end up with more words than expected!</div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="page-title-header">PAGE 2: Task 3 & Task 4</div>
+
+        <section class="task-container">
+            <h2>Task 3</h2>
+            <p>In this task, there are two elements in the HTML below, a parent and a child. Use flexbox to center the child inside the parent.</p>
+            <div class="preview-box task3-preview">
+                <div class="parent">
+                    <div class="child">Center me.</div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <section class="task-container">
+            <h2>Task 4</h2>
+            <p>In this task, we want you to arrange these items into rows as in the image below:</p>
+            <div class="preview-box task4-preview">
+                <div class="tags-flex-wrapper">
+                    <div class="tag-item">Turnip</div>
+                    <div class="tag-item">greens</div>
+                    <div class="tag-item">yarrow</div>
+                    <div class="tag-item">ricebean</div>
+                    <div class="tag-item">rutabaga</div>
+                    <div class="tag-item">endive</div>
+                    <div class="tag-item">cauliflower</div>
+                    <div class="tag-item">sea lettuce</div>
+                    <div class="tag-item">kohlrabi</div>
+                    <div class="tag-item">amaranth</div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="page-title-header">PAGE 3: Final Layout Task</div>
+
+        <section class="task-container">
+            <h2>Layout Preview</h2>
+            <div class="layout-wrapper-box">
+                <div class="layout-container">
+                    
+                    <aside class="left-sidebar"></aside>
+                    
+                    <main class="main-body">
+                        <div class="top-banner"></div>
+
+                        <div class="middle-grid">
+                            <div class="left-stack">
+                                <div class="triple-box-row">
+                                    <div class="sub-box"></div>
+                                    <div class="sub-box"></div>
+                                    <div class="sub-box"></div>
+                                </div>
+                                <div class="double-box-row">
+                                    <div class="sub-box long-box"></div>
+                                    <div class="sub-box short-box"></div>
+                                </div>
+                            </div>
+
+                            <div class="right-featured-card">
+                                <div class="card-header-part"></div>
+                                <div class="card-body-part"></div>
+                            </div>
+                        </div>
+
+                        <div class="bottom-gallery-strip">
+                            <div class="gallery-block height-60"></div>
+                            <div class="gallery-block height-80"></div>
+                            <div class="gallery-block height-100-split">
+                                <div class="split-top"></div>
+                            </div>
+                            <div class="gallery-block height-100"></div>
+                            <div class="gallery-block height-120"></div>
+                            <div class="gallery-block height-50"></div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+
+    </div>

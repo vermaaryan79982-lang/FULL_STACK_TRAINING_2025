@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 4</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#eeeeee;
+
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.main{
+
+    width:90%;
+
+    margin:auto;
+
+    margin-top:40px;
+}
+
+h1{
+
+    color:blue;
+
+    margin-bottom:30px;
+}
+
+p{
+
+    font-size:20px;
+
+    line-height:35px;
+
+    margin-bottom:20px;
+}
+
+
+
+.grid{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 220px);
+
+    gap:10px;
+}
+
+
+.card img{
+
+    width:220px;
+
+    height:200px;
+
+    object-fit:cover;
+}
+
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:10px;
+
+    text-align: center;
+
+}
+
+.tags span{
+
+
+    background:rgb(198, 228, 79);
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:5px;
+
+    font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+    <h1>Task 4</h1>
+
+    <p>
+        In this task, you will need to use both grid layout
+        and flexbox to recreate the example.
+    </p>
+
+    <p>
+        The gap between the column and row tracks
+        should be 10px.
+    </p>
+
+  
+
+    <div class="grid">
+
+        <div class="card">
+
+            <img src="https://mdn.github.io/shared-assets/images/examples/balloons1.jpg">
+
+
+            <div class="tags">
+
+                <span>balloon</span>
+                <span>red</span>
+                <span>sky</span>
+                <span>blue</span>
+                <span>Hot air balloon</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img src="https://mdn.github.io/shared-assets/images/examples/balloons2.jpg">
+
+            <div class="tags">
+
+                <span>balloons</span>
+                <span>houses</span>
+                <span>train</span>
+                <span>harborside</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <img src="https://mdn.github.io/shared-assets/images/examples/balloons3.jpg">
+
+
+            <div class="tags">
+
+                <span>balloons</span>
+                <span>inflating</span>
+                <span>green</span>
+                <span>blue</span>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://mdn.github.io/shared-assets/images/examples/balloons4.jpg ">
+
+            <div class="tags">
+
+                <span>balloon</span>
+                <span>sun</span>
+                <span>sky</span>
+                <span>summer</span>
+                <span>bright</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

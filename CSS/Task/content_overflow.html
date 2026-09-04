@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webpage</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      
+      background-color: white;
+    }
+
+    h1{
+      margin-left: 70px;
+      margin-top: 40px;
+      font-size: 60px;
+    }
+
+    p{
+      margin-left: 70px;
+      margin-top: 25px;
+      font-size: 28px;
+      line-height: 45px;
+      width: 90%;
+    }
+
+
+    .container{
+
+      width: 90%;
+
+      border: 3px solid lightblue;
+
+      margin-left: 70px;
+      margin-top: 40px;
+
+      padding: 10px;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 10px;
+    }
+
+    .items{
+
+      background-color: #4f79a3;
+      color: white;
+
+      border-radius: 12px;
+
+      font-size: 26px;
+      line-height: 45px;
+
+      min-height: 500px;
+
+      padding: 20px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+
+
+  <h1>Task 2</h1>
+
+  <p>
+    In this task, the list items are all different sizes,
+    but we want them to be displayed as three equal sized
+    columns.
+  </p>
+
+  <p>
+    Your final result should look like the image below:
+  </p>
+
+  <div class="container">
+
+    <div class="items">
+      I am small
+    </div>
+
+    <div class="items">
+      I have more content than the very small item.
+    </div>
+
+    <div class="items">
+      I have lots of content. So much content that I don't
+      know where it is all going to go. I'm glad that CSS
+      is pretty good at dealing with situations where we
+      end up with more words than expected!
+    </div>
+
+  </div>
+
+</body>
+</html>
